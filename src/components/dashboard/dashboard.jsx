@@ -6,6 +6,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Grid from "../grid/grid"
 
 import { Outlet, useNavigate } from 'react-router-dom';
+import Products from '../products/products';
 
 function Dashboard() {
   const navigate=useNavigate();
@@ -45,7 +46,7 @@ function Dashboard() {
       <Frame navigation={navigation()}>
       <Routes>
         <Route path="grid" element={<Grid />} />
-        <Route path="products" element={<TextStyle variation="negative">The Page you are looking for is under construction</TextStyle>} />
+        <Route path="products" element={<Products/>} />
         <Route path="grid2" element={<TextStyle variation="negative">The Page you are looking for is under construction</TextStyle>} />
       </Routes>
         {/* <Outlet /> */}
