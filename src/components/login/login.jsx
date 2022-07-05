@@ -14,7 +14,7 @@ function LogIn() {
     const handleUserNameChange = useCallback((newValue) => setUserName(newValue), []);
     const handlePasswordChange = useCallback((newValue) => setPass(newValue), []);
 
-    const NavigateToDashboard=()=>navigate("/dashboard");
+    // const NavigateToDashboard=()=>navigate("/dashboard");
 
     function handleLogIn() {
         if (validate() == true) {
@@ -30,8 +30,7 @@ function LogIn() {
                     setUserName("");
                     setPass("");
                     localStorage.setItem("AuthToken", JSON.stringify(result.data.token));
-                    // navigate("/dashboard");
-                    NavigateToDashboard()
+                    navigate("/panel");
                 }
                 else {
                     console.log("Something went wrong!", result.message);

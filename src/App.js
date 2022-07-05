@@ -14,7 +14,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 function App() {
 
-    const headingsContext=[
+  const headingsContext = [
     {
       nomenClature: "_id",
       name: "ID",
@@ -87,19 +87,30 @@ function App() {
     // },
   ];
 
-  sessionStorage.setItem("HeadingContext",JSON.stringify(headingsContext));
-  
+  sessionStorage.setItem("HeadingContext", JSON.stringify(headingsContext));
+
   return (
     <React.Fragment>
       <BrowserRouter>
         <AppProvider i18n={enTranslations}>
           <Routes>
-            <Route path="/" element={localStorage.getItem('AuthToken') ? <Navigate to="/dashboard" /> : <Navigate to="/login" />} />
-            <Route path="login" element={localStorage.getItem("AuthToken") ? <Navigate to="/dashboard" /> : <LogIn />} />
-            <Route path="dashboard" element={localStorage.getItem("AuthToken") ? <Dashboard /> : <Navigate to="/login" />} >
-              <Route path="grid" element={localStorage.getItem("AuthToken") ? <Grid /> : <Navigate to="/login" />} />
+            <Route path="/panel/" element={<Dashboard />}>
+              <Route path="*" element={<p>no page found</p>} />
             </Route>
-            <Route path="*" element={<NotFound/>}/>
+            <Route path="/login" element={<LogIn />} />
+            <Route path="*" element={<Navigate to={"/login"} />} />
+
+
+
+            {/* <Route path="/dashboard" element={localStorage.getItem("AuthToken") ? <Dashboard /> : <Navigate to="/login" />} >
+              <Route path="/grid" element={localStorage.getItem("AuthToken") ? <Grid /> : <Navigate to="/login" />} />
+              <Route path="*" element={<>gkljkjewhkebhfekljblkjbkl</>}/>
+            </Route>
+            <Route path="/login" element={ <LogIn />} />
+            <Route path="*" element={ <Navigate to="/login" />}/> */}
+
+
+            
           </Routes>
         </AppProvider>
       </BrowserRouter>
